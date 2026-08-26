@@ -188,3 +188,16 @@ The Linux kernel compiled for Nerves is a stripped down version of the default
 Raspberry Pi Linux kernel. This is done to remove unnecessary features, select
 some Nerves-specific features like F2FS and SquashFS support, and to save space.
 
+
+## OVCS fork
+
+This is the OVCS fork of `nerves_system_rpi5`, adding SocketCAN support
+(kernel CAN + MCP251xFD, `can-utils`, `socketcand`, `iproute2`) for use
+in a vehicle — it backs the infotainment firmware. Tracks upstream
+**v2.0.3** (`nerves_system_br` 1.33.7, Erlang/OTP 28.5).
+
+Upstream v2.0.0 changed the MicroSD/eMMC layout to A/B firmware slots
+with automatic rollback, and it is a **one-way** upgrade: a device on the
+older layout must be reflashed, not updated over the air. Firmware built
+against this system must also call `Nerves.Runtime.validate_firmware/0`,
+or every update is reverted on the next boot.

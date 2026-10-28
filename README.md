@@ -28,7 +28,7 @@ running a pre-2.0 firmware and haven't upgraded yet.
 | CPU                  | 2.4 GHz quad-core Cortex-A76     |
 | Memory               | 4 GB or 8 GB DRAM                |
 | Storage              | MicroSD                          |
-| Linux kernel         | 6.12 w/ Raspberry Pi patches     |
+| Linux kernel         | 6.18 w/ Raspberry Pi patches     |
 | IEx terminal         | HDMI and USB keyboard (can be changed to UART) |
 | GPIO, I2C, SPI       | Yes - [Elixir Circuits](https://github.com/elixir-circuits) |
 | ADC                  | No                               |
@@ -45,12 +45,12 @@ running a pre-2.0 firmware and haven't upgraded yet.
 
 The most common way of using this Nerves System is create a project with `mix
 nerves.new` and to export `MIX_TARGET=rpi5`. See the [Getting started
-guide](https://hexdocs.pm/nerves/getting-started.html#creating-a-new-nerves-app)
+guide](https://nerves.hexdocs.pm/getting-started.html#creating-a-new-nerves-app)
 for more information.
 
 If you need custom modifications to this system for your device, clone this
 repository and update as described in [Making custom
-systems](https://hexdocs.pm/nerves/customizing-systems.html).
+systems](https://nerves.hexdocs.pm/customizing-systems.html).
 
 ## Upgrading to 2.0
 
@@ -64,7 +64,7 @@ If you don't do this, the device will run the old firmware on the next reboot.
 A simple default way of validating the firmware can be enabled using
 Nerves.Runtime's startup guard feature as described in [Assisted firmware
 validation and automatic
-revert](https://hexdocs.pm/nerves_runtime/readme.html#assisted-firmware-validation-and-automatic-revert).
+revert](https://nerves-runtime.hexdocs.pm/readme.html#assisted-firmware-validation-and-automatic-revert).
 Please follow the directions there for the needed config file update.
 
 If in doubt, use `mix nerves.new` to create a new project and compare what it
@@ -134,7 +134,7 @@ outside of any filesystem. Provisioning is an optional step and reasonable
 defaults are provided if this is missing.
 
 Provisioning information can be queried using the Nerves.Runtime KV store's
-[`Nerves.Runtime.KV.get/1`](https://hexdocs.pm/nerves_runtime/Nerves.Runtime.KV.html#get/1)
+[`Nerves.Runtime.KV.get/1`](https://nerves-runtime.hexdocs.pm/Nerves.Runtime.KV.html#get/1)
 function.
 
 Keys used by this system are:
@@ -194,7 +194,7 @@ some Nerves-specific features like F2FS and SquashFS support, and to save space.
 This is the OVCS fork of `nerves_system_rpi5`, adding SocketCAN support
 (kernel CAN + MCP251xFD, `can-utils`, `socketcand`, `iproute2`) for use
 in a vehicle — it backs the infotainment firmware. Tracks upstream
-**v2.0.3** (`nerves_system_br` 1.33.7, Erlang/OTP 28.5).
+**v2.2.1** (`nerves_system_br` 1.35.3, Erlang/OTP 29.1.2, Linux 6.18).
 
 Upstream v2.0.0 changed the MicroSD/eMMC layout to A/B firmware slots
 with automatic rollback, and it is a **one-way** upgrade: a device on the
